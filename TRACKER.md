@@ -166,3 +166,5 @@ Date	Change	Criterion supported
 2026-11-21	FastAPI backend with WebSocket voice bridge, tools dispatch, and guardrails	Technical depth (25%) / Prototype (15%)
 2026-11-21	React + Vite trilingual UI with Web Audio capture/playback, Simple Mode, and Document Scanner	Prototype (15%) / Impact (25%)
 2026-11-21	20/20 backend unit & smoke tests passing; benchmark evaluation suite run across 120 utterances (91.7% accuracy)	All
+2026-11-21	Add pytest.ini with asyncio scope fix; add backend/__init__.py and tests/__init__.py so pytest runs cleanly from root	Prototype (15%)
+2026-11-21	Add frontend/public/trivaani.svg favicon; fix index.html to reference it instead of missing vite.svg	Presentation (10%)
