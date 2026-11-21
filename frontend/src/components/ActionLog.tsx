@@ -1,4 +1,5 @@
 import React from "react";
+import { Activity } from "lucide-react";
 import { ActionLogItem } from "../hooks/useSession";
 
 interface ActionLogProps {
@@ -10,7 +11,10 @@ export const ActionLog: React.FC<ActionLogProps> = ({ logs, sessionId }) => {
   return (
     <div className="card" style={{ flex: 1, minHeight: "260px" }}>
       <div className="card-title">
-        <span>⚡ Agent Action Log</span>
+        <span style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <Activity size={18} color="var(--primary)" />
+          <span>Agent Action Log</span>
+        </span>
         <span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>
           Session: {sessionId.substring(0, 10)}...
         </span>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Mic, Square, Send } from "lucide-react";
 import { ChatMessage } from "../hooks/useSession";
 
 interface VoicePanelProps {
@@ -54,7 +55,10 @@ export const VoicePanel: React.FC<VoicePanelProps> = ({
   return (
     <div className="card" style={{ height: "calc(100vh - 120px)" }}>
       <div className="card-title">
-        <span>🎙️ Voice Assistant</span>
+        <span style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <Mic size={18} color="var(--primary)" />
+          <span>Voice Assistant</span>
+        </span>
         <span style={{ fontSize: "0.8rem", color: isRecording ? "var(--danger)" : "var(--text-muted)" }}>
           {isRecording ? "Listening..." : "Tap mic to speak"}
         </span>
@@ -66,7 +70,7 @@ export const VoicePanel: React.FC<VoicePanelProps> = ({
           onClick={onToggleRecording}
           title={isRecording ? "Stop Listening" : "Start Speaking"}
         >
-          {isRecording ? "⏹️" : "🎙️"}
+          {isRecording ? <Square size={32} /> : <Mic size={36} />}
         </button>
         <p style={{ marginTop: "0.75rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
           {isRecording ? "Speak naturally in Sinhala, Tamil, or English" : "Click to speak"}
@@ -134,10 +138,15 @@ export const VoicePanel: React.FC<VoicePanelProps> = ({
             border: "none",
             borderRadius: "8px",
             padding: "0 1rem",
-            cursor: "pointer"
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "0.3rem"
           }}
         >
-          Send
+          <Send size={15} />
+          <span>Send</span>
         </button>
       </form>
     </div>

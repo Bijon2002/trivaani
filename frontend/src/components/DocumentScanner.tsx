@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { Camera, FileCheck2, Upload, Sparkles } from "lucide-react";
 import { SessionData } from "../hooks/useSession";
 
 interface DocumentScannerProps {
@@ -66,7 +67,10 @@ export const DocumentScanner: React.FC<DocumentScannerProps> = ({
   return (
     <div className="card" style={{ marginBottom: "1.5rem" }}>
       <div className="card-title">
-        <span>📷 Supporting Documents</span>
+        <span style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <Camera size={18} color="var(--primary)" />
+          <span>Supporting Documents</span>
+        </span>
         <span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>
           Gemini Vision OCR
         </span>
@@ -105,10 +109,14 @@ export const DocumentScanner: React.FC<DocumentScannerProps> = ({
                   borderRadius: "4px",
                   background: isUploaded ? "#d1fae5" : "#e2e8f0",
                   color: isUploaded ? "#065f46" : "#64748b",
-                  fontWeight: 600
+                  fontWeight: 600,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.25rem"
                 }}
               >
-                {isUploaded ? "Uploaded" : "Pending"}
+                {isUploaded && <FileCheck2 size={12} />}
+                <span>{isUploaded ? "Uploaded" : "Pending"}</span>
               </span>
             </div>
           );
@@ -151,10 +159,14 @@ export const DocumentScanner: React.FC<DocumentScannerProps> = ({
               borderRadius: "6px",
               padding: "0.4rem 0.8rem",
               fontSize: "0.85rem",
-              cursor: "pointer"
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.3rem"
             }}
           >
-            {isScanning ? "Scanning..." : "Upload Photo"}
+            <Upload size={14} />
+            <span>{isScanning ? "Scanning..." : "Upload Photo"}</span>
           </button>
 
           <button
@@ -167,11 +179,15 @@ export const DocumentScanner: React.FC<DocumentScannerProps> = ({
               borderRadius: "6px",
               padding: "0.4rem 0.6rem",
               fontSize: "0.8rem",
-              cursor: "pointer"
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.25rem"
             }}
             title="Scan synthetic NIC test sample"
           >
-            Demo Sample
+            <Sparkles size={13} />
+            <span>Demo Sample</span>
           </button>
         </div>
 

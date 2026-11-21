@@ -1,4 +1,5 @@
 import React from "react";
+import { ShieldCheck } from "lucide-react";
 
 interface ConsentModalProps {
   isOpen: boolean;
@@ -58,8 +59,9 @@ export const ConsentModal: React.FC<ConsentModalProps> = ({ isOpen, onAccept, la
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2 style={{ fontSize: "1.3rem", color: "#003366", marginBottom: "1rem" }}>
-          🛡️ {currentText.title}
+        <h2 style={{ fontSize: "1.3rem", color: "#003366", marginBottom: "1rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <ShieldCheck size={24} color="#003366" />
+          <span>{currentText.title}</span>
         </h2>
         <p style={{ color: "#4a5568", marginBottom: "0.75rem", fontSize: "0.95rem", lineHeight: "1.5" }}>
           {currentText.p1}

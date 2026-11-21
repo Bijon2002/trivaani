@@ -1,4 +1,5 @@
 import React from "react";
+import { Landmark } from "lucide-react";
 
 interface HeaderProps {
   language: string;
@@ -25,7 +26,8 @@ export const Header: React.FC<HeaderProps> = ({
     <header className="app-header">
       <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
         <div className="brand-title">
-          <span>🇱🇰 Trivaani</span>
+          <Landmark size={24} color="#FFBE29" />
+          <span>Trivaani</span>
           <span className="brand-badge">DevFest 2026</span>
         </div>
         <select

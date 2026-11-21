@@ -1,4 +1,5 @@
 import React from "react";
+import { CheckCircle2, ClipboardCheck, Check, Send, X, PartyPopper } from "lucide-react";
 import { SessionData } from "../hooks/useSession";
 
 interface ConfirmModalProps {
@@ -32,20 +33,32 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
     <div className="modal-overlay">
       <div className="modal-content" style={{ maxWidth: "620px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
-          <h2 style={{ fontSize: "1.25rem", color: "#003366", fontWeight: 700 }}>
-            {isSubmitted ? "✅ Application Submitted!" : "📋 Citizen Review & Confirmation"}
+          <h2 style={{ fontSize: "1.25rem", color: "#003366", fontWeight: 700, display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            {isSubmitted ? (
+              <>
+                <CheckCircle2 size={22} color="#10b981" />
+                <span>Application Submitted!</span>
+              </>
+            ) : (
+              <>
+                <ClipboardCheck size={22} color="#003366" />
+                <span>Citizen Review & Confirmation</span>
+              </>
+            )}
           </h2>
           <button
             onClick={onClose}
-            style={{ background: "none", border: "none", fontSize: "1.2rem", cursor: "pointer", color: "#64748b" }}
+            style={{ background: "none", border: "none", cursor: "pointer", color: "#64748b" }}
           >
-            ✕
+            <X size={20} />
           </button>
         </div>
 
         {isSubmitted ? (
           <div style={{ textAlign: "center", padding: "1.5rem 0" }}>
-            <div style={{ fontSize: "3rem", marginBottom: "0.5rem" }}>🎉</div>
+            <div style={{ display: "flex", justifyContent: "center", marginBottom: "0.5rem" }}>
+              <PartyPopper size={48} color="#10b981" />
+            </div>
             <h3 style={{ color: "#003366", marginBottom: "0.5rem" }}>
               Successfully Submitted
             </h3>
@@ -135,10 +148,15 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
                     borderRadius: "8px",
                     border: "none",
                     fontWeight: 600,
-                    cursor: "pointer"
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "0.4rem"
                   }}
                 >
-                  ✓ Confirm Details Are Accurate
+                  <Check size={18} />
+                  <span>Confirm Details Are Accurate</span>
                 </button>
               ) : (
                 <button
@@ -151,10 +169,15 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
                     borderRadius: "8px",
                     border: "none",
                     fontWeight: 600,
-                    cursor: "pointer"
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "0.4rem"
                   }}
                 >
-                  🚀 Submit Application Now
+                  <Send size={18} />
+                  <span>Submit Application Now</span>
                 </button>
               )}
             </div>
