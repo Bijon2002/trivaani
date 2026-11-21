@@ -1,0 +1,150 @@
+{
+  "service_id": "illustrative_water_connection",
+  "is_illustrative": true,
+  "title": {
+    "en": "Community Water Connection Request (Illustrative)",
+    "si": "ප්‍රජා ජල සැපයුම් අයදුම්පත (නිදර්ශනාත්මක)",
+    "ta": "சமூக குடிநீர் இணைப்பு விண்ணப்பம் (விளக்கத்திற்குரியது)"
+  },
+  "department": {
+    "en": "Department of Community Water Supply (Illustrative)",
+    "si": "ප්‍රජා ජල සම්පාදන දෙපාර්තමේන්තුව (නිදර්ශනාත්මක)",
+    "ta": "சமூக நீர் வழங்கல் திணைக்களம் (விளக்கத்திற்குரியது)"
+  },
+  "description": {
+    "en": "Illustrative config demonstrating that Trivaani can onboard a new public service without any code changes.",
+    "si": "කේත වෙනස් කිරීමකින් තොරව නව රාජ්‍ය සේවාවක් ත්‍රිවාණී පද්ධතියට එක් කළ හැකි බව පෙන්වන නිදර්ශනාත්මක වින්‍යාසය.",
+    "ta": "எந்தவொரு குறியீட்டு மாற்றமும் இன்றி புதிய பொதுச் சேவையை திரிவாணி அமைப்பில் இணைக்க முடியும் என்பதை காட்டும் விளக்க மாதிரி."
+  },
+  "supported_languages": ["si", "ta", "en"],
+  "required_documents": [
+    {
+      "doc_type": "applicant_nic",
+      "mandatory": true,
+      "title": {
+        "en": "Applicant National Identity Card (NIC)",
+        "si": "ඉල්ලුම්කරුගේ ජාතික හැඳුනුම්පත",
+        "ta": "விண்ணப்பதாரரின் தேசிய அடையாள அட்டை"
+      },
+      "description": {
+        "en": "Front photo of valid NIC.",
+        "si": "වලංගු හැඳුනුම්පතේ ඉදිරිපස ඡායාරූපය.",
+        "ta": "செல்லுபடியாகும் அடையாள அட்டையின் முன் புகைப்படம்."
+      },
+      "extractable_fields": [
+        "applicant_nic",
+        "applicant_name"
+      ]
+    },
+    {
+      "doc_type": "grama_niladhari_certificate",
+      "mandatory": true,
+      "title": {
+        "en": "Grama Niladhari Residence Certificate",
+        "si": "ග්‍රාම නිලධාරී පදිංචි සහතිකය",
+        "ta": "கிராம நிலதாரி வதிவிடச் சான்றிதழ்"
+      },
+      "description": {
+        "en": "Certificate proving residence in the division.",
+        "si": "කොට්ඨාසයේ පදිංචිය තහවුරු කරන ග්‍රාම නිලධාරී සහතිකය.",
+        "ta": "பிரிவில் வசிப்பதை உறுதிப்படுத்தும் கிராம அலுவலர் சான்றிதழ்."
+      },
+      "extractable_fields": [
+        "grama_niladhari_division",
+        "applicant_address"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "applicant_name",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Applicant Name",
+        "si": "ඉල්ලුම්කරුගේ නම",
+        "ta": "விண்ணப்பதாரரின் பெயர்"
+      },
+      "hint": {
+        "en": "Full name of main householder.",
+        "si": "ප්‍රධාන ගෘහමූලිකයාගේ නම.",
+        "ta": "பிரதான குடும்பத் தலைவரின் பெயர்."
+      }
+    },
+    {
+      "id": "applicant_nic",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Applicant NIC Number",
+        "si": "ඉල්ලුම්කරුගේ හැඳුනුම්පත් අංකය",
+        "ta": "விண்ணப்பதாரரின் அடையாள அட்டை எண்"
+      },
+      "hint": {
+        "en": "NIC number.",
+        "si": "හැඳුනුම්පත් අංකය.",
+        "ta": "அடையாள அட்டை எண்."
+      }
+    },
+    {
+      "id": "applicant_phone",
+      "type": "tel",
+      "required": true,
+      "label": {
+        "en": "Contact Phone Number",
+        "si": "දුරකථන අංකය",
+        "ta": "தொடர்பு தொலைபேசி எண்"
+      },
+      "hint": {
+        "en": "Active mobile number.",
+        "si": "සක්‍රිය ජංගම දුරකථන අංකය.",
+        "ta": "செயலில் உள்ள கைபேசி எண்."
+      }
+    },
+    {
+      "id": "grama_niladhari_division",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Grama Niladhari Division",
+        "si": "ග්‍රාම නිලධාරී වසම",
+        "ta": "கிராம நிலதாரி பிரிவு"
+      },
+      "hint": {
+        "en": "Name or number of GN division.",
+        "si": "ග්‍රාම නිලධාරී වසමේ නම හෝ අංකය.",
+        "ta": "கிராம அலுவலர் பிரிவின் பெயர் அல்லது எண்."
+      }
+    },
+    {
+      "id": "applicant_address",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Installation Address",
+        "si": "සම්බන්ධතාවය අවශ්‍ය ලිපිනය",
+        "ta": "இணைப்பு கோரப்படும் முகவரி"
+      },
+      "hint": {
+        "en": "Premises where water meter will be installed.",
+        "si": "ජල මීටරය සවි කිරීමට අවශ්‍ය ස්ථානයේ ලිපිනය.",
+        "ta": "நீர்மானி பொருத்தப்பட வேண்டிய இடத்தின் முகவரி."
+      }
+    },
+    {
+      "id": "household_members_count",
+      "type": "text",
+      "required": false,
+      "label": {
+        "en": "Number of Household Residents",
+        "si": "නිවසේ පදිංචිකරුවන් ගණන",
+        "ta": "வீட்டில் வசிக்கும் நபர்களின் எண்ணிக்கை"
+      },
+      "hint": {
+        "en": "Estimated number of users.",
+        "si": "නිවසේ සිටින සාමාජිකයින් සංඛ්‍යාව.",
+        "ta": "பயனாளர்களின் எண்ணிக்கை."
+      }
+    }
+  ]
+}

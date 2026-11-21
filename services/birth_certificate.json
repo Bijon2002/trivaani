@@ -1,0 +1,291 @@
+{
+  "service_id": "birth_certificate",
+  "title": {
+    "en": "Birth Certificate Copy Request",
+    "si": "උප්පැන්න සහතික පිටපත් ඉල්ලුම්පත්‍රය",
+    "ta": "பிறப்புச் சான்றிதழ் பிரதி விண்ணப்பம்"
+  },
+  "department": {
+    "en": "Registrar General's Department, Sri Lanka",
+    "si": "රෙජිස්ට්‍රාර් ජනරාල් දෙපාර්තමේන්තුව, ශ්‍රී ලංකාව",
+    "ta": "பதிவாளர் நாயகம் திணைக்களம், இலங்கை"
+  },
+  "description": {
+    "en": "Official application to request a certified copy of a birth certificate (Form B 63).",
+    "si": "උප්පැන්න සහතිකයක සහතික කළ පිටපතක් ලබාගැනීම සඳහා වන නිල අයදුම්පත්‍රය (ආකෘති පත්‍ර B 63).",
+    "ta": "பிறப்புச் சான்றிதழின் சான்றளிக்கப்பட்ட பிரதியைப் பெறுவதற்கான உத்தியோகபூர்வ விண்ணப்பம் (படிவம் B 63)."
+  },
+  "supported_languages": ["si", "ta", "en"],
+  "required_documents": [
+    {
+      "doc_type": "applicant_nic",
+      "mandatory": true,
+      "title": {
+        "en": "Applicant National Identity Card (NIC)",
+        "si": "ඉල්ලුම්කරුගේ ජාතික හැඳුනුම්පත",
+        "ta": "விண்ணப்பதாரரின் தேசிய அடையாள அட்டை (NIC)"
+      },
+      "description": {
+        "en": "Front and back photo of the applicant's valid Sri Lankan National Identity Card.",
+        "si": "ඉල්ලුම්කරුගේ වලංගු ශ්‍රී ලංකා ජාතික හැඳුනුම්පතේ ඉදිරිපස සහ පසුපස ඡායාරූපය.",
+        "ta": "விண்ணப்பதாரரின் செல்லுபடியாகும் இலங்கை தேசிய அடையாள அட்டையின் முன் மற்றும் பின் புகைப்படம்."
+      },
+      "extractable_fields": [
+        "applicant_nic",
+        "applicant_full_name"
+      ]
+    },
+    {
+      "doc_type": "birth_record_slip",
+      "mandatory": false,
+      "title": {
+        "en": "Previous Birth Certificate Copy or Hospital Record",
+        "si": "පෙර උප්පැන්න සහතික පිටපත හෝ රෝහල් ලේඛනය",
+        "ta": "முந்தைய பிறப்புச் சான்றிதழ் பிரதி அல்லது மருத்துவமனை பதிவு"
+      },
+      "description": {
+        "en": "A photo of an older birth certificate copy, hospital birth declaration, or registration slip if available.",
+        "si": "තිබේ නම්, පැරණි උප්පැන්න සහතික පිටපතක්, රෝහල් උපත් ප්‍රකාශනය හෝ ලියාපදිංචි කුවිතාන්සිය.",
+        "ta": "பழைய பிறப்புச் சான்றிதழ் பிரதி, மருத்துவமனை பிறப்பு அறிக்கை அல்லது பதிவு சீட்டு (இருந்தால்)."
+      },
+      "extractable_fields": [
+        "child_full_name",
+        "date_of_birth",
+        "place_of_birth",
+        "birth_district",
+        "father_full_name",
+        "mother_full_name",
+        "registration_number"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "child_full_name",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Full Name of Person / Child",
+        "si": "දරුවාගේ / පුද්ගලයාගේ සම්පූර්ණ නම",
+        "ta": "பிள்ளையின் / நபரின் முழுப் பெயர்"
+      },
+      "hint": {
+        "en": "Full name as stated in birth records.",
+        "si": "උප්පැන්න ලේඛනයේ සඳහන් සම්පූර්ණ නම.",
+        "ta": "பிறப்பு பதிவில் உள்ள முழுப் பெயர்."
+      }
+    },
+    {
+      "id": "date_of_birth",
+      "type": "date",
+      "required": true,
+      "label": {
+        "en": "Date of Birth",
+        "si": "උපන් දිනය",
+        "ta": "பிறந்த திகதி"
+      },
+      "hint": {
+        "en": "Format: YYYY-MM-DD",
+        "si": "ආකෘතිය: වසර-මාසය-දිනය",
+        "ta": "வடிவம்: வருடம்-மாதம்-திகதி"
+      }
+    },
+    {
+      "id": "place_of_birth",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Place of Birth / Hospital",
+        "si": "උපන් ස්ථානය / රෝහල",
+        "ta": "பிறந்த இடம் / மருத்துவமனை"
+      },
+      "hint": {
+        "en": "Town or hospital where birth took place.",
+        "si": "උපත සිදුවූ නගරය හෝ රෝහල.",
+        "ta": "பிறப்பு நிகழ்ந்த நகரம் அல்லது மருத்துவமனை."
+      }
+    },
+    {
+      "id": "birth_district",
+      "type": "select",
+      "required": true,
+      "options": [
+        "Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo",
+        "Galle", "Gampaha", "Hambantota", "Jaffna", "Kalutara",
+        "Kandy", "Kegalle", "Kilinochchi", "Kurunegala", "Mannar",
+        "Matale", "Matara", "Monaragala", "Mullaitivu", "Nuwara Eliya",
+        "Polonnaruwa", "Puttalam", "Ratnapura", "Trincomalee", "Vavuniya"
+      ],
+      "label": {
+        "en": "District of Birth",
+        "si": "උපන් දිස්ත්‍රික්කය",
+        "ta": "பிறந்த மாவட்டம்"
+      },
+      "hint": {
+        "en": "Administrative district of birth.",
+        "si": "උපත ලියාපදිංචි කළ දිස්ත්‍රික්කය.",
+        "ta": "பிறப்பு பதிவு செய்யப்பட்ட மாவட்டம்."
+      }
+    },
+    {
+      "id": "divisional_secretariat",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Divisional Secretariat Division",
+        "si": "ප්‍රාදේශීය ලේකම් කොට්ඨාසය",
+        "ta": "பிரதேச செயலகப் பிரிவு"
+      },
+      "hint": {
+        "en": "Divisional secretariat office area where the birth was registered.",
+        "si": "උපත ලියාපදිංචි කළ ප්‍රාදේශීය ලේකම් කාර්යාල කොට්ඨාසය.",
+        "ta": "பிறப்பு பதிவு செய்யப்பட்ட பிரதேச செயலகப் பிரிவு."
+      }
+    },
+    {
+      "id": "father_full_name",
+      "type": "text",
+      "required": false,
+      "label": {
+        "en": "Father's Full Name",
+        "si": "පියාගේ සම්පූර්ණ නම",
+        "ta": "தந்தையின் முழுப் பெயர்"
+      },
+      "hint": {
+        "en": "Full name of father.",
+        "si": "පියාගේ සම්පූර්ණ නම.",
+        "ta": "தந்தையின் முழுப் பெயர்."
+      }
+    },
+    {
+      "id": "mother_full_name",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Mother's Full Name",
+        "si": "මවගේ සම්පූර්ණ නම",
+        "ta": "தாயின் முழுப் பெயர்"
+      },
+      "hint": {
+        "en": "Full name of mother (maiden name if applicable).",
+        "si": "මවගේ සම්පූර්ණ නම.",
+        "ta": "தாயின் முழுப் பெயர்."
+      }
+    },
+    {
+      "id": "registration_number",
+      "type": "text",
+      "required": false,
+      "label": {
+        "en": "Birth Registration Entry Number (if known)",
+        "si": "ලියාපදිංචි අංකය (දන්නේ නම් පමණක්)",
+        "ta": "பிறப்பு பதிவு இலக்கம் (தெரிந்தால் மட்டும்)"
+      },
+      "hint": {
+        "en": "Number on old certificate or hospital card.",
+        "si": "පැරණි සහතිකයේ හෝ රෝහල් කාඩ්පතේ ඇති අංකය.",
+        "ta": "பழைய சான்றிதழில் உள்ள பதிவு இலக்கம்."
+      }
+    },
+    {
+      "id": "applicant_full_name",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Applicant's Full Name",
+        "si": "ඉල්ලුම්කරුගේ සම්පූර්ණ නම",
+        "ta": "விண்ணப்பதாரரின் முழுப் பெயர்"
+      },
+      "hint": {
+        "en": "Full name of the person submitting the application.",
+        "si": "අයදුම්පත ඉදිරිපත් කරන අයගේ සම්පූර්ණ නම.",
+        "ta": "விண்ணப்பத்தை சமர்ப்பிக்கும் நபரின் முழுப் பெயர்."
+      }
+    },
+    {
+      "id": "applicant_nic",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Applicant NIC Number",
+        "si": "ඉල්ලුම්කරුගේ ජාතික හැඳුනුම්පත් අංකය",
+        "ta": "விண்ணப்பதாரரின் தேசிய அடையாள அட்டை இலக்கம்"
+      },
+      "hint": {
+        "en": "10-character (old) or 12-digit (new) NIC.",
+        "si": "ඉලක්කම් 9 සහ V/X හෝ නව ඉලක්කම් 12 හැඳුනුම්පත් අංකය.",
+        "ta": "பழைய 9 இலக்கம் + எழுத்து அல்லது புதிய 12 இலக்க அடையாள அட்டை."
+      }
+    },
+    {
+      "id": "applicant_phone",
+      "type": "tel",
+      "required": true,
+      "label": {
+        "en": "Applicant Phone Number",
+        "si": "ඉල්ලුම්කරුගේ දුරකථන අංකය",
+        "ta": "விண்ணப்பதாரரின் தொலைபேசி எண்"
+      },
+      "hint": {
+        "en": "Mobile number (e.g. 0771234567).",
+        "si": "ජංගම දුරකථන අංකය (උදා: 0771234567).",
+        "ta": "கைபேசி எண் (உதாரணம்: 0771234567)."
+      }
+    },
+    {
+      "id": "applicant_relationship",
+      "type": "select",
+      "required": true,
+      "options": [
+        "Self",
+        "Mother",
+        "Father",
+        "Guardian",
+        "Spouse",
+        "Child",
+        "Sibling",
+        "Authorized Representative"
+      ],
+      "label": {
+        "en": "Relationship to Person",
+        "si": "දරුවාට / පුද්ගලයාට ඇති සම්බන්ධතාවය",
+        "ta": "பிள்ளையுடனான / நபருடனான உறவுமுறை"
+      },
+      "hint": {
+        "en": "Applicant's relationship to the person whose birth certificate is requested.",
+        "si": "උප්පැන්න සහතිකය ඉල්ලුම් කරන පුද්ගලයා සමඟ ඇති ඥාතිත්වය.",
+        "ta": "விண்ணப்பதாரருக்கும் பிறப்புச் சான்றிதழ் கோரப்படும் நபருக்குமான உறவு."
+      }
+    },
+    {
+      "id": "applicant_address",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Applicant Mailing Address",
+        "si": "ඉල්ලුම්කරුගේ ලිපිනය",
+        "ta": "விண்ணப்பதාරரின் அஞ்சல் முகவரி"
+      },
+      "hint": {
+        "en": "Current postal address to receive the copy.",
+        "si": "පිටපත ලබාගැනීමට අවශ්‍ය වත්මන් තැපැල් ලිපිනය.",
+        "ta": "பிரதியைப் பெறுவதற்கான தற்போதைய அஞ்சல் முகவரி."
+      }
+    },
+    {
+      "id": "reason_for_copy",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Reason for Request",
+        "si": "පිටපත ලබාගැනීමේ අවශ්‍යතාවය",
+        "ta": "பிரதி பெறுவதற்கான நோக்கம்"
+      },
+      "hint": {
+        "en": "Purpose such as School Admission, Passport, National ID, Employment.",
+        "si": "පාසල් ඇතුළත් කිරීම, විදේශ ගමන් බලපත්‍රය, හැඳුනුම්පත හෝ රැකියා අවශ්‍යතාවය.",
+        "ta": "பாடசாலை அனுமதி, கடவுச்சீட்டு, அடையாள அட்டை அல்லது வேலைவாய்ப்பு தேவை."
+      }
+    }
+  ]
+}
