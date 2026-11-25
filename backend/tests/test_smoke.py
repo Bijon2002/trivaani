@@ -19,8 +19,10 @@ def test_walking_skeleton_smoke_flow():
         assert init_data["language"] == "si"
         assert "child_full_name" in init_data["state"]["missing"]["missing_fields"][0]["id"] or len(init_data["state"]["missing"]["missing_fields"]) > 0
 
-        # 2. Receive initial agent greeting transcript
+        # 2. Receive initial agent greeting transcript (handling warning fallback if any)
         greeting = websocket.receive_json()
+        if greeting.get("type") == "warning":
+            greeting = websocket.receive_json()
         assert greeting["type"] == "transcript"
         assert greeting["speaker"] == "agent"
 

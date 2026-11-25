@@ -168,3 +168,4 @@ Date	Change	Criterion supported
 2026-11-21	20/20 backend unit & smoke tests passing; benchmark evaluation suite run across 120 utterances (91.7% accuracy)	All
 2026-11-21	Add pytest.ini with asyncio scope fix; add backend/__init__.py and tests/__init__.py so pytest runs cleanly from root	Prototype (15%)
 2026-11-21	Add frontend/public/trivaani.svg favicon; fix index.html to reference it instead of missing vite.svg	Presentation (10%)
+2026-11-26	Set up .env, install frontend packages, verify production build and 20/20 test suite	Working prototype (15%)
