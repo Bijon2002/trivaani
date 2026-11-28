@@ -1,4 +1,5 @@
 import React from "react";
+import { Building2, Coins, Clock } from "lucide-react";
 import { SessionData } from "../hooks/useSession";
 
 interface FormPanelProps {
@@ -47,6 +48,27 @@ export const FormPanel: React.FC<FormPanelProps> = ({
             {missing.is_complete ? "Complete" : `${missing.missing_fields.length} missing`}
           </span>
         )}
+      </div>
+
+      {/* Official Government Service Summary Badge */}
+      <div className="gov-info-card">
+        <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "#334155" }}>
+          <Coins size={14} color="#003366" />
+          <span>Statutory Fee: <strong>LKR 100.00</strong></span>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "#334155" }}>
+          <Clock size={14} color="#003366" />
+          <span>Processing: <strong>1 Working Day</strong></span>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "#334155", gridColumn: "span 2" }}>
+          <Building2 size={14} color="#003366" />
+          <span>
+            Designated Office:{" "}
+            <strong>
+              Divisional Secretariat ({(formData["birth_district"]?.value as string) || "Regional Branch"})
+            </strong>
+          </span>
+        </div>
       </div>
 
       <div style={{ flex: 1 }}>

@@ -169,3 +169,4 @@ Date	Change	Criterion supported
 2026-11-21	Add pytest.ini with asyncio scope fix; add backend/__init__.py and tests/__init__.py so pytest runs cleanly from root	Prototype (15%)
 2026-11-21	Add frontend/public/trivaani.svg favicon; fix index.html to reference it instead of missing vite.svg	Presentation (10%)
 2026-11-26	Set up .env, install frontend packages, verify production build and 20/20 test suite	Working prototype (15%)
+2026-11-26	Add audio waveform visualizer, TTS read-aloud, government fee & DS office bar, OCR confidence badge, and printable official B 63 submission voucher	Impact (25%) / Innovation (20%)

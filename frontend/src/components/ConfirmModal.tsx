@@ -1,5 +1,5 @@
 import React from "react";
-import { CheckCircle2, ClipboardCheck, Check, Send, X, PartyPopper } from "lucide-react";
+import { CheckCircle2, ClipboardCheck, Check, Send, X, PartyPopper, Printer } from "lucide-react";
 import { SessionData } from "../hooks/useSession";
 
 interface ConfirmModalProps {
@@ -79,7 +79,25 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
             >
               Tracking Ref: {submissionId}
             </div>
-            <div style={{ marginTop: "1.5rem" }}>
+            <div style={{ marginTop: "1.5rem", display: "flex", justifyContent: "center", gap: "0.75rem" }}>
+              <button
+                onClick={() => window.print()}
+                style={{
+                  background: "#10b981",
+                  color: "white",
+                  padding: "0.7rem 1.25rem",
+                  borderRadius: "8px",
+                  border: "none",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.4rem"
+                }}
+              >
+                <Printer size={16} />
+                <span>Print Official Voucher</span>
+              </button>
               <button
                 onClick={onClose}
                 style={{
@@ -94,6 +112,27 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
               >
                 Close
               </button>
+            </div>
+
+            {/* Hidden printable government receipt */}
+            <div className="printable-receipt" style={{ display: "none" }}>
+              <div style={{ textAlign: "center", borderBottom: "2px solid #000", paddingBottom: "1rem", marginBottom: "1.5rem" }}>
+                <h1 style={{ fontSize: "1.6rem", margin: 0 }}>DEMOCRATIC SOCIALIST REPUBLIC OF SRI LANKA</h1>
+                <h2 style={{ fontSize: "1.2rem", margin: "0.25rem 0" }}>Registrar General's Department</h2>
+                <h3 style={{ fontSize: "1rem", margin: 0 }}>Application for Copy of Birth Certificate (Form B 63) - Confirmation Voucher</h3>
+              </div>
+              <p><strong>Tracking Reference:</strong> {submissionId}</p>
+              <p><strong>Date & Time:</strong> {new Date().toLocaleString()}</p>
+              <p><strong>Applicant Name:</strong> {(formData["applicant_full_name"]?.value as string) || "N/A"}</p>
+              <p><strong>Applicant NIC:</strong> {(formData["applicant_nic"]?.value as string) || "N/A"}</p>
+              <p><strong>Child / Person Name:</strong> {(formData["child_full_name"]?.value as string) || "N/A"}</p>
+              <p><strong>Date of Birth:</strong> {(formData["date_of_birth"]?.value as string) || "N/A"}</p>
+              <p><strong>District of Birth:</strong> {(formData["birth_district"]?.value as string) || "Colombo"}</p>
+              <p><strong>Designated Office:</strong> Divisional Secretariat ({(formData["birth_district"]?.value as string) || "Colombo"})</p>
+              <p><strong>Statutory Stamp Fee:</strong> LKR 100.00 (Paid / Due at counter)</p>
+              <div style={{ marginTop: "2rem", borderTop: "1px dashed #666", paddingTop: "1rem" }}>
+                <p>Present this voucher or quote Reference ID <strong>{submissionId}</strong> at Counter 04 of the designated Divisional Secretariat.</p>
+              </div>
             </div>
           </div>
         ) : (

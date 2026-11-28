@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Mic, Square, Send } from "lucide-react";
+import { Mic, Square, Send, Volume2 } from "lucide-react";
 import { ChatMessage } from "../hooks/useSession";
 
 interface VoicePanelProps {
@@ -18,6 +18,17 @@ export const VoicePanel: React.FC<VoicePanelProps> = ({
   language
 }) => {
   const [inputText, setInputText] = useState("");
+
+  const handleSpeakText = (text: string) => {
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      if (language === "si") utterance.lang = "si-LK";
+      else if (language === "ta") utterance.lang = "ta-LK";
+      else utterance.lang = "en-US";
+      window.speechSynthesis.speak(utterance);
+    }
+  };
 
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,8 +83,18 @@ export const VoicePanel: React.FC<VoicePanelProps> = ({
         >
           {isRecording ? <Square size={32} /> : <Mic size={36} />}
         </button>
-        <p style={{ marginTop: "0.75rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
-          {isRecording ? "Speak naturally in Sinhala, Tamil, or English" : "Click to speak"}
+        {isRecording && (
+          <div className="waveform-container">
+            <div className="waveform-bar"></div>
+            <div className="waveform-bar"></div>
+            <div className="waveform-bar"></div>
+            <div className="waveform-bar"></div>
+            <div className="waveform-bar"></div>
+            <div className="waveform-bar"></div>
+          </div>
+        )}
+        <p style={{ marginTop: "0.5rem", fontSize: "0.85rem", color: isRecording ? "var(--danger)" : "var(--text-muted)", fontWeight: isRecording ? 600 : 400 }}>
+          {isRecording ? "Listening to your voice..." : "Click mic to speak"}
         </p>
       </div>
 
@@ -86,8 +107,17 @@ export const VoicePanel: React.FC<VoicePanelProps> = ({
         ) : (
           conversation.map((msg) => (
             <div key={msg.id} className={`bubble bubble-${msg.speaker}`}>
-              <div style={{ fontSize: "0.75rem", opacity: 0.8, marginBottom: "0.2rem" }}>
-                {msg.speaker === "agent" ? "Trivaani" : "You"} · {msg.timestamp}
+              <div style={{ fontSize: "0.75rem", opacity: 0.8, marginBottom: "0.2rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span>{msg.speaker === "agent" ? "Trivaani" : "You"} · {msg.timestamp}</span>
+                {msg.speaker === "agent" && (
+                  <button
+                    onClick={() => handleSpeakText(msg.text)}
+                    style={{ background: "none", border: "none", cursor: "pointer", color: "inherit", padding: "0 2px" }}
+                    title="Read aloud"
+                  >
+                    <Volume2 size={13} />
+                  </button>
+                )}
               </div>
               <div>{msg.text}</div>
             </div>

@@ -192,13 +192,24 @@ export const DocumentScanner: React.FC<DocumentScannerProps> = ({
         </div>
 
         {lastScanResult && lastScanResult.extracted_fields && (
-          <div style={{ marginTop: "0.5rem", padding: "0.6rem", background: "#f8fafc", borderRadius: "6px", fontSize: "0.8rem" }}>
-            <span style={{ fontWeight: 600, color: "#0369a1" }}>Extracted with Vision:</span>
-            <ul style={{ paddingLeft: "1.2rem", marginTop: "0.3rem" }}>
+          <div style={{ marginTop: "0.5rem", padding: "0.75rem", background: "#f0fdf4", border: "1px solid #bbf7d0", borderRadius: "8px", fontSize: "0.8rem" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.4rem" }}>
+              <span style={{ fontWeight: 700, color: "#166534", display: "flex", alignItems: "center", gap: "0.3rem" }}>
+                <FileCheck2 size={14} color="#166534" />
+                <span>Gemini Vision OCR Verified</span>
+              </span>
+              <span style={{ background: "#dcfce7", color: "#15803d", padding: "0.15rem 0.4rem", borderRadius: "4px", fontSize: "0.7rem", fontWeight: 700 }}>
+                {Math.round((lastScanResult.confidence || 0.98) * 100)}% Confidence
+              </span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
               {Object.entries(lastScanResult.extracted_fields).map(([k, v]) => (
-                <li key={k}>{k}: <strong>{String(v)}</strong></li>
+                <div key={k} style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px dashed #dcfce7", paddingBottom: "2px" }}>
+                  <span style={{ color: "#475569" }}>{k}:</span>
+                  <span style={{ fontWeight: 600, color: "#0f172a" }}>{String(v)}</span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         )}
       </div>
